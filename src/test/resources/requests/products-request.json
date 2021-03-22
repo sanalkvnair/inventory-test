@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "name": "Cabinet",
+      "contain_articles": [
+        {
+          "art_id": "1",
+          "amount_of": "1"
+        },
+        {
+          "art_id": "2",
+          "amount_of": "1"
+        },
+        {
+          "art_id": "3",
+          "amount_of": "1"
+        },
+        {
+          "art_id": "4",
+          "amount_of": "2"
+        }
+      ]
+    }
+  ]
+}

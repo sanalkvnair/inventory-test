@@ -1,0 +1,24 @@
+{
+  "inventory": [
+    {
+      "art_id": "5",
+      "name": "handle",
+      "stock": "1"
+    },
+    {
+      "art_id": "6",
+      "name": "door",
+      "stock": "1"
+    },
+    {
+      "art_id": "7",
+      "name": "frame",
+      "stock": "2"
+    },
+    {
+      "art_id": "8",
+      "name": "side panel",
+      "stock": "4"
+    }
+  ]
+}

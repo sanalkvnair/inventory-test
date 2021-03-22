@@ -1,0 +1,78 @@
+
+plugins {
+	id("idea")
+	id("net.linguica.maven-settings") version "0.5"
+	id("org.springframework.boot") version "2.4.4"
+	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("com.diffplug.spotless") version "5.8.1"
+	id("org.jetbrains.kotlin.jvm") version "1.4.31"
+	id("org.jetbrains.kotlin.plugin.spring") version "1.4.31"
+	id("org.jetbrains.kotlin.plugin.allopen") version "1.4.31"
+	id("org.jetbrains.kotlin.plugin.jpa") version "1.4.31"
+	id("org.jetbrains.kotlin.plugin.noarg") version "1.4.31"
+}
+
+apply plugin: 'idea'
+apply plugin: 'kotlin'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("de.otto.edison:edison-hal:2.0.1")
+	implementation("org.zalando:problem-spring-web:0.26.2")
+	runtimeOnly("com.h2database:h2")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+test {
+	useJUnitPlatform()
+}
+
+compileKotlin {
+	kotlinOptions {
+		jvmTarget = "11"
+		useIR = true
+	}
+}
+
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = "11"
+		useIR = true
+	}
+}
+
+springBoot {
+	buildInfo()
+}
+
+spotless {
+	lineEndings = 'UNIX'
+	kotlin {
+		ktlint()
+	}
+}
+
+bootRun {
+	systemProperties += System.properties
+	systemProperties.remove("java.vm.vendor")
+	systemProperties.remove("java.endorsed.dirs")
+}
